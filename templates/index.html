@@ -1,0 +1,30 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>EduAI - Student Performance Predictor</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>EduMind: AI for Academic Success</h1>
+    <form action="/predict" method="POST">
+      <label>Study Hours per Day:</label>
+      <input type="number" step="0.1" name="study_hours" required>
+
+      <label>Attendance Percentage:</label>
+      <input type="number" step="0.1" name="attendance" required>
+
+      <label>Participation Level (1-10):</label>
+      <input type="number" step="1" min="1" max="10" name="participation" required>
+
+      <button type="submit">Predict</button>
+    </form>
+
+    {% if result %}
+      <div class="result">{{ result }}</div>
+    {% endif %}
+  </div>
+</body>
+</html>
